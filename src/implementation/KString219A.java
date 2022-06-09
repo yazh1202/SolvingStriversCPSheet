@@ -2,6 +2,8 @@ package implementation;
 
 import java.util.*;
 
+/*The major thing that I learned from this is if a solution wants repeated pattern
+as an answer the goal should be to find that pattern and then print it repeatedly */
 public class KString219A {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,17 +26,18 @@ public class KString219A {
             return;
         }
         StringBuilder strb = new StringBuilder();
-        for (int i = 0; i < k; i++) {
-            for (char c : hm.keySet()) {
-                if (hm.get(c) % k != 0) {
-                    System.out.println(-1);
-                    return;
-                }
-                for (int j = 0; j < hm.get(c) / k; j++) {
-                    strb.append(c);
-                }
+
+        for (char c : hm.keySet()) {
+            if (hm.get(c) % k != 0) {
+                System.out.println(-1);
+                return;
+            }
+            for (int j = 0; j < hm.get(c) / k; j++) {
+                strb.append(c);
             }
         }
-        System.out.println(strb);
+        for (int i = 0; i < k; i++) {
+            System.out.print(strb);
+        }
     }
 }
