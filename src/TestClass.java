@@ -1,28 +1,7 @@
-package math;//package math;
-//
-//import java.util.Scanner;
-//
-////When looking to mininze anything, think of how to minimize best before writing code
-//public class MinimalSquare1360A {
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        int tc = sc.nextInt();
-//        for (int i = 0; i < tc; i++) {
-//            int l = sc.nextInt();
-//            int b = sc.nextInt();
-//            int max = Math.max(l, b);
-//            int min = Math.min(l, b);
-//            int side = Math.max(max, 2 * min);
-//            System.out.println(side * side);
-//        }
-//
-//    }
-//}
-
 import java.io.*;
 import java.util.*;
 
-public class MinimalSquare1360A {
+public class TestClass {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -92,38 +71,26 @@ public class MinimalSquare1360A {
         int tc = sc.nextInt();
         for (int i = 0; i < tc; i++) {
             int l = sc.nextInt();
-            ArrayList<Integer> feven = new ArrayList<>();
-            int odds = 0;
-            for (int j = 0; j < 2 * l; j++) {
-                int inpt = sc.nextInt();
-                if (inpt % 2 == 0) {
-                    int count = 0;
-                    while (inpt % 2 != 1) {
-                        inpt /= 2;
-                        count++;
-                    }
-                    feven.add(count);
-                } else {
-                    odds++;
-                }
-            }
-            int evens = feven.size();
-            if (evens == odds) {
-                System.out.println();
-                System.out.println(0);
-            } else if (evens < odds) {
-                System.out.println((odds - evens) / 2);
+            if (l % 4 != 0) {
+                System.out.println("NO");
             } else {
-                Collections.sort(feven);
-                int ops = 0;
-                int diff = evens - odds;
-                while (diff-- > 0) {
-                    ops += feven.get(0);
-                    feven.remove(0);
+                System.out.println("YES");
+                int len = l / 2;
+                for (int j = 1; j <= len; j++) {
+                    System.out.print(j * 2 + " ");
                 }
-                System.out.println(ops);
+                int osum = 0;
+                int esum = len * (len + 1);
+                int k = 0;
+                for (int s = 0; s < len - 1; s++) {
+                    osum += 2 * s + 1;
+                    System.out.print(2 * s + 1 + " ");
+                }
+                System.out.print(esum - osum);
+                System.out.println();
             }
+
         }
     }
-}
 
+}
